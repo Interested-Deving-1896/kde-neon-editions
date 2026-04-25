@@ -12,8 +12,10 @@
   image: python:3.12-slim
   before_script:
     - pip install pyyaml --quiet
+    - apt-get update -qq && apt-get install -y --no-install-recommends git
+    - . scripts/bootstrap-scripts.sh
   script:
-    - python3 scripts/validate-manifest.py "manifests/${EDITION}.yaml"
+    - python3 "${SCRIPTS_DIR}/validate-manifest.py" "manifests/${EDITION}.yaml"
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_PIPELINE_SOURCE == "push"
@@ -24,10 +26,12 @@
 .lint-shellcheck-base:
   stage: lint
   image: koalaman/shellcheck-alpine:stable
+  before_script:
+    - . scripts/bootstrap-scripts.sh
   script:
     - |
-      echo "==> Running shellcheck on all scripts"
-      find scripts/ -name "*.sh" ! -type l | sort | while read -r SCRIPT; do
+      echo "==> Running shellcheck on all scripts in ${SCRIPTS_DIR}"
+      find "${SCRIPTS_DIR}" -name "*.sh" | sort | while read -r SCRIPT; do
         echo "    Checking: ${SCRIPT}"
         shellcheck --severity=warning --shell=bash "${SCRIPT}"
       done
@@ -43,7 +47,8 @@
   stage: lint
   image: alpine:latest
   before_script:
-    - apk add --no-cache curl
+    - apk add --no-cache curl git python3
+    - . scripts/bootstrap-scripts.sh
   script:
     - |
       echo "==> Linting .gitlab-ci.yml via GitLab API"
