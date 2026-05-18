@@ -54,7 +54,7 @@
       echo "==> Linting .gitlab-ci.yml via GitLab API"
       CONTENT=$(cat .gitlab-ci.yml)
       RESPONSE=$(curl -s \
-        --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+        --header "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
         --header "Content-Type: application/json" \
         --request POST \
         "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/ci/lint" \
@@ -64,7 +64,7 @@
         echo "    .gitlab-ci.yml is valid"
       else
         echo "    Errors:"
-        echo "${RESPONSE}" | python3 -c "import json,sys; r=json.load(sys.stdin); [print('   ',e) for e in r.get('errors',[])] or print(sys.stdin)" 2>/dev/null || echo "${RESPONSE}"
+        echo "${RESPONSE}" | python3 -c "import json,sys; r=json.load(sys.stdin); [print('   ',e) for e in r.get('errors',[])]" 2>/dev/null || echo "${RESPONSE}"
         exit 1
       fi
   rules:
