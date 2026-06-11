@@ -4,28 +4,25 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/kde-neon-editions)
 
 <!-- AI:start:what-it-does -->
-This project provides a set of tools and configurations for managing KDE Neon editions, tailored for developers and contributors working within the KDE ecosystem. It addresses the need for streamlined workflows and consistent setups when developing or customizing KDE Neon environments.
+This project provides a set of scripts and configurations for managing KDE Neon editions, tailored for developers and contributors working within the KDE ecosystem. It streamlines the process of maintaining and synchronizing KDE Neon builds, addressing the needs of those involved in open-source operating system development.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon environments, a GitHub Actions workflow (`mirror-osp-to-ooc.yaml`) for syncing repositories, and a directory structure for organizing related files. The workflow automates mirroring from the Open Source Project (OSP) repository to the Open Operating Community (OOC) repository. The `kde-neon-editions` directory contains edition-specific configurations and scripts.
+The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon environments, along with CI workflows for automation. The `kde-neon-editions` directory contains the main scripts and resources. The `.github` directory holds the CI workflow file `mirror-osp-to-ooc.yaml`, which automates mirroring and updates. The `README.md` provides documentation.
 
-```
+Directory structure:
+```plaintext
 .
 ├── .github
 │   └── workflows
 │       └── mirror-osp-to-ooc.yaml
 ├── README.md
-├── kde-neon-editions
-│   ├── edition1
-│   │   ├── build.sh
-│   │   └── config.yaml
-│   ├── edition2
-│   │   ├── build.sh
-│   │   └── config.yaml
-│   └── ...
+└── kde-neon-editions
+    ├── build-scripts
+    ├── configs
+    └── resources
 ```
 <!-- AI:end:architecture -->
 
@@ -49,17 +46,14 @@ cd kde-neon-editions
 ## CI
 
 <!-- AI:start:ci -->
-### Continuous Integration
+The repository uses GitHub Actions for continuous integration. Current workflows:
 
-This repository uses GitHub Actions for CI. The following workflow is defined:
-
-- **`mirror-osp-to-ooc.yaml`**: Mirrors changes from the upstream repository (`gitlab.com/openos-project/...`) to this GitHub repository.  
-  - **Triggers**: Runs on a schedule or when changes are detected upstream.  
+- **`mirror-osp-to-ooc.yaml`**: Mirrors the repository from the original source (`https://gitlab.com/openos-project/kde-ecosystem-deving/neon-deving/kde-neon-editions`) to this GitHub repository. Runs on a schedule or when triggered manually.  
   - **Required Secrets**:  
-    - `UPSTREAM_REPO_URL`: URL of the upstream repository to mirror.  
-    - `GITHUB_TOKEN`: Automatically provided by GitHub for authentication.  
+    - `GITLAB_PERSONAL_ACCESS_TOKEN`: Token for authenticating with the GitLab source repository.  
+    - `GITHUB_TOKEN`: Automatically provided by GitHub for repository authentication.  
 
-Ensure required secrets are configured in the repository settings for the workflow to function.
+No additional workflows are defined.
 <!-- AI:end:ci -->
 
 ## Mirror chain
@@ -79,9 +73,9 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 ## Contributors
 
 <!-- AI:start:contributors -->
-[@Interested-Deving-1896](https://github.com/Interested-Deving-1896) - 11 commits
+[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 12 commits
 
-*Note: This repository may be a mirror. Please check the upstream source for additional contributions.*
+*Note: This repository may be a mirror. Please refer to the upstream source for additional contributions and updates.*
 <!-- AI:end:contributors -->
 
 ## Origins
