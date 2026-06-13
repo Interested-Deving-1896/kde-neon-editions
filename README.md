@@ -4,16 +4,15 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/kde-neon-editions)
 
 <!-- AI:start:what-it-does -->
-This project provides a set of scripts and configurations for managing KDE Neon editions, tailored for developers and contributors working within the KDE ecosystem. It streamlines the process of maintaining and synchronizing KDE Neon builds, addressing the needs of those involved in open-source operating system development.
+This project provides a set of scripts and configurations for managing KDE Neon editions, focusing on streamlining development and customization within the KDE ecosystem. It is used by developers and contributors working on KDE Neon to automate workflows and maintain consistency across builds.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon environments, along with CI workflows for automation. The `kde-neon-editions` directory contains the main scripts and resources. The `.github` directory holds the CI workflow file `mirror-osp-to-ooc.yaml`, which automates mirroring and updates. The `README.md` provides documentation.
+The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon images, YAML workflows for CI/CD automation, and configuration files for repository management. The `kde-neon-editions` directory contains the primary logic, while `.github` houses GitHub Actions workflows. The `mirror-osp-to-ooc.yaml` workflow automates mirroring from the source repository to the current repository. The `README.md` provides documentation.
 
-Directory structure:
-```plaintext
+```
 .
 ├── .github
 │   └── workflows
@@ -22,7 +21,7 @@ Directory structure:
 └── kde-neon-editions
     ├── build-scripts
     ├── configs
-    └── resources
+    └── utils
 ```
 <!-- AI:end:architecture -->
 
