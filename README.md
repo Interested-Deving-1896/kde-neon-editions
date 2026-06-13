@@ -4,24 +4,24 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/kde-neon-editions)
 
 <!-- AI:start:what-it-does -->
-This project provides a set of scripts and configurations for managing KDE Neon editions, focusing on streamlining development and customization within the KDE ecosystem. It is used by developers and contributors working on KDE Neon to automate workflows and maintain consistency across builds.
+This project provides a collection of KDE Neon editions tailored for specific development and deployment needs. It addresses the challenge of managing and customizing KDE Neon environments by offering pre-configured setups. It is used by developers and system integrators working within the KDE ecosystem or related open-source projects.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon images, YAML workflows for CI/CD automation, and configuration files for repository management. The `kde-neon-editions` directory contains the primary logic, while `.github` houses GitHub Actions workflows. The `mirror-osp-to-ooc.yaml` workflow automates mirroring from the source repository to the current repository. The `README.md` provides documentation.
+The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon images, YAML workflows for CI/CD automation, and configuration files for repository management. The `kde-neon-editions` directory contains the core scripts and resources. The `.github` directory holds GitHub Actions workflows, including `mirror-osp-to-ooc.yaml`, which automates repository mirroring. The `README.md` provides documentation.
 
-```
+```plaintext
 .
 ├── .github
 │   └── workflows
 │       └── mirror-osp-to-ooc.yaml
+├── kde-neon-editions
+│   ├── build-scripts
+│   ├── configs
+│   └── resources
 ├── README.md
-└── kde-neon-editions
-    ├── build-scripts
-    ├── configs
-    └── utils
 ```
 <!-- AI:end:architecture -->
 
