@@ -4,13 +4,13 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/kde-neon-editions)
 
 <!-- AI:start:what-it-does -->
-This project provides a set of scripts and configurations for managing KDE Neon editions within the context of open-source development workflows. It facilitates the synchronization and customization of KDE Neon environments, catering to developers and contributors working on KDE ecosystem projects.
+This project provides a set of tools and configurations for managing KDE Neon editions, focusing on streamlining development and deployment workflows. It is used by developers and maintainers working within the KDE ecosystem to ensure consistency and efficiency in building and maintaining Neon-based distributions.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project is structured to manage KDE Neon editions with automation workflows. The primary components include shell scripts for edition configuration, a GitHub Actions workflow (`mirror-osp-to-ooc.yaml`) for syncing repositories, and metadata files for project documentation. The `kde-neon-editions` directory contains scripts and resources specific to KDE Neon edition management. The `.github` directory houses CI/CD configurations. Files at the root level provide general information and entry points for contributors.
+The project consists of scripts and configurations for managing KDE Neon editions. The key components include shell scripts for building and maintaining KDE Neon environments, along with CI workflows for automation. The `kde-neon-editions` directory contains the core scripts and configurations. The `.github` directory holds the `mirror-osp-to-ooc.yaml` workflow, which automates mirroring operations. The `README.md` provides documentation for the repository.
 
 ```plaintext
 .
@@ -18,10 +18,10 @@ The project is structured to manage KDE Neon editions with automation workflows.
 │   └── workflows
 │       └── mirror-osp-to-ooc.yaml
 ├── README.md
-├── kde-neon-editions
-│   ├── edition-config.sh
-│   ├── resources/
-│   └── scripts/
+└── kde-neon-editions
+    ├── build-scripts
+    ├── configs
+    └── utils
 ```
 <!-- AI:end:architecture -->
 
@@ -45,13 +45,17 @@ cd kde-neon-editions
 ## CI
 
 <!-- AI:start:ci -->
-The repository uses GitHub Actions for continuous integration. 
+### Continuous Integration
 
-- **mirror-osp-to-ooc.yaml**: Syncs changes from the original GitLab repository to this GitHub repository. It triggers on a schedule and requires the following secrets:
-  - `GITLAB_ACCESS_TOKEN`: Token for authenticating with the GitLab API.
-  - `GITHUB_TOKEN`: Automatically provided by GitHub for repository authentication.
+This repository uses GitHub Actions for CI. The following workflow is defined:
 
-No additional workflows are defined.
+- **mirror-osp-to-ooc.yaml**: Syncs the repository from the original source (Open Source Project) to this repository. Ensures the latest changes are mirrored.  
+  - **Triggers**: Runs on a schedule or manual dispatch.
+  - **Required Secrets**: 
+    - `SOURCE_REPO_URL`: URL of the source repository to mirror from.
+    - `TARGET_REPO_TOKEN`: Personal access token with push permissions for this repository. 
+
+Ensure the required secrets are configured in the repository settings for the workflow to function correctly.
 <!-- AI:end:ci -->
 
 ## Mirror chain
@@ -71,9 +75,9 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 ## Contributors
 
 <!-- AI:start:contributors -->
-[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 17 commits
+[@Interested-Deving-1896](https://github.com/Interested-Deving-1896) - 18 commits
 
-*Note: This repository may be a mirror. Please refer to the upstream source for additional contributions and updates.*
+*Note: This repository may be a mirror. Please check the upstream source for additional contributions.*
 <!-- AI:end:contributors -->
 
 ## Origins
