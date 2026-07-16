@@ -46,12 +46,12 @@ cd kde-neon-editions
 ## CI
 
 <!-- AI:start:ci -->
-The repository uses GitHub Actions for continuous integration. 
+The repository uses GitHub Actions for continuous integration.
 
-- **mirror-osp-to-ooc.yaml**: Syncs the repository with the upstream source at `https://gitlab.com/openos-project/kde-ecosystem-deving/neon-deving/kde-neon-editions`. It triggers on a schedule or manual dispatch.  
-  - **Required secrets**:  
-    - `UPSTREAM_REPO_URL`: URL of the upstream repository.  
-    - `GITLAB_TOKEN`: Personal access token for authenticating with GitLab.  
+- **mirror-osp-to-ooc.yaml**: Syncs the repository with the upstream source at `https://gitlab.com/openos-project/kde-ecosystem-deving/neon-deving/kde-neon-editions`. It triggers on a schedule or manual dispatch.
+  - **Required secrets**:
+    - `UPSTREAM_REPO_URL`: URL of the upstream repository.
+    - `GITLAB_TOKEN`: Personal access token for authenticating with GitLab.
     - `GITHUB_TOKEN`: Automatically provided by GitHub for authentication with the repository.
 <!-- AI:end:ci -->
 
@@ -80,7 +80,7 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 ## Origins
 
 <!-- AI:start:origins -->
-_Original project — no upstream fork._
+_Original project — no upstream influences recorded._
 <!-- AI:end:origins -->
 
 ## Resources
