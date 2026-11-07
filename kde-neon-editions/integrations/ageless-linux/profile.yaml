@@ -1,0 +1,32 @@
+schema_version: 1
+profile:
+  id: ageless-linux
+  display_name: Ageless Linux (Debian-derived profile)
+  profile_type: os-identity-policy-layer
+  status: planned
+  support_status: unknown
+  base_os_family: debian
+  base_os_release: null
+  architecture: null
+  package_manager: null
+  init_system: null
+  kernel_source: null
+  kernel_abi: null
+  provenance:
+    upstream: https://github.com/agelesslinux/agelesslinux
+    bdfs_contract: https://github.com/Interested-Deving-1896/btrfs-dwarfs-framework/tree/main/integrations/ageless-linux
+  compatibility:
+    ubuntu_noble_neon: unverified
+    debian_derived_kde_image: pending_isolated_validation
+  capabilities:
+    inventory: true
+    conversion: false
+    image_build: false
+    kernel_build: false
+    package_install: false
+    publish: false
+  safety:
+    execute_converter_in_ci: false
+    modify_host: false
+    require_disposable_image: true
+    require_immutable_base_image: true
