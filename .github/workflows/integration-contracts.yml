@@ -1,0 +1,30 @@
+name: Integration profile contracts
+
+on:
+  pull_request:
+    paths:
+      - "kde-neon-editions/integrations/**"
+      - ".github/workflows/integration-contracts.yml"
+  push:
+    branches: [main]
+    paths:
+      - "kde-neon-editions/integrations/**"
+      - ".github/workflows/integration-contracts.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install YAML parser
+        run: python -m pip install --disable-pip-version-check PyYAML
+      - name: Validate opt-in integration contracts
+        run: python kde-neon-editions/integrations/validate_profiles.py
